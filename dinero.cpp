@@ -16,7 +16,7 @@ int montocentavos[3]={};
 
 for (int i=0;i<5;i++){
     montobilletes[i]=cantidad/billetes[i];
-    cantidad-=montobilletes[i]*billetes[i];
+    cantidad-=montobilletes[i]*billetes[i];//verificar 
     cout<<"S/. "<<billetes[i]<<" = "<<montobilletes[i]<<endl;
 }
 
