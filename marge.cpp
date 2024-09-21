@@ -1,44 +1,22 @@
-#include <iostream>
-
-void merge(int* start, int* mid) {
-  while (start < mid) {
-    if (*mid < *start) {
-      // Move element at mid to the start position
-      *mid ^= *start;
-      *start ^= *mid;
-      *mid ^= *start;
-      int* p = start + 1;
-      while (p < mid) {
-        *p ^= *(p - 1);
-        *p ^= *(p - 1);
-        p++;
-      }
-      mid--;
-    } else {
-      // Move start pointer one step forward
-      start++;
-    }
-  }
-}
-
 int main() {
-  int arr[10] = {5, 2, 8, 3, 1, 6, 4, 7, 9, 0};
-  int* start = arr;
-  int* mid = arr + 5; // Middle element of the array
 
-  std::cout << "Original array: ";
-  for (int i = 0; i < 10; i++) {
-    std::cout << arr[i] << " ";
-  }
-  std::cout << std::endl;
+    int A[] = {2,4,8,1,3,5};
+    int* p = A;
+    int* q = A;
 
-  merge(start, mid);
-
-  std::cout << "Array after merge: ";
-  for (int i = 0; i < 10; i++) {
-    std::cout << arr[i] << " ";
-  }
-  std::cout << std::endl;
+    while ((q + 1)) { 
+        q++;
+        cout<<q<<endl;
+    }
+    q = p + (q - p) / 2;
+    cout << "Primer elemento (p): " << p << endl;
+    cout << "Elemento medio (q): " <<q << endl;
+    merge(p , q);
+    cout << "Array despues del merge: ";
+    for (int i = 0; i < 10; i++) {
+        cout << A[i] << " ";
+    }
+    cout <<endl;
 
   return 0;
 }
