@@ -1,55 +1,45 @@
 #include <iostream>
-#include <vector>
-
 using namespace std;
 
-void cocktailSort(vector<int>& arr) {
-    bool swapped = true;
-    int start = 0;
-    int end = arr.size() - 1;
+void cocktail(int* p, int* q) {
+    bool cambio = true;
 
-    while (swapped) {
-        swapped = false;
+    while (p < q && cambio) {
+        cambio = false;
 
-        // Pasada de izquierda a derecha (similar a Bubble Sort)
-        for (int i = start; i < end; ++i) {
-            if (arr[i] > arr[i + 1]) {
-                swap(arr[i], arr[i + 1]);
-                swapped = true;
+        for (int* ac = p; ac < q; ac++) {
+            if (*ac > *(ac + 1)) {
+                swap(*ac,*(ac+1));
+                cambio = true;
             }
         }
+        --q; 
 
-        // Si no hubo intercambios, la lista está ordenada
-        if (!swapped)
-            break;
+        if (!cambio) break;
 
-        swapped = false;
+        cambio = false;
 
-        // Disminuir el final ya que el último elemento está en su lugar correcto
-        --end;
-
-        // Pasada de derecha a izquierda
-        for (int i = end - 1; i >= start; --i) {
-            if (arr[i] > arr[i + 1]) {
-                swap(arr[i], arr[i + 1]);
-                swapped = true;
+        for (int* ac = q; ac > p; --ac) {
+            if (*ac < *(ac - 1)) {
+                swap(*ac,*(ac-1));
+                cambio = true;
             }
         }
-
-        // Aumentar el inicio ya que el primer elemento está en su lugar correcto
-        ++start;
+        ++p; 
     }
 }
 
 int main() {
-    vector<int> arr = {5, 1, 4, 2, 8, 0, 2};
-    
-    cocktailSort(arr);
-    
-    cout << "Array ordenado: ";
-    for (int num : arr) {
-        cout << num << " ";
+    int A[] = {19,1,0,22,45,72,88,11};
+    int* p = A; 
+    int* q = A + (sizeof(A) / sizeof(A[0])) - 1; 
+    for (int* ptr = p; ptr <= q; ++ptr) {
+        cout << *ptr << " ";
     }
-    
-    return 0;
+    cout << endl;
+    cocktail(p, q);
+    for (int* ptr = A; ptr <= q; ++ptr) {
+        cout << *ptr << " ";
+    }
+    cout << endl;
 }
